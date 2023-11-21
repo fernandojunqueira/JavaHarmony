@@ -3,13 +3,13 @@ package br.com.alura.musicstream.models;
 public class Audio {
     private String title;
     private double duration;
-    private int totalReproductions;
+    private int totalReproductions = 0;
     private int likes;
-    private double rating;
+    private int rating;
     private double sumRating;
-    private int totalRating;
+    private int totalRating = 0;
 
-    public double getRating() {
+    public int getRating() {
         return rating;
     }
 
@@ -44,10 +44,16 @@ public class Audio {
     public void rating(int rating) {
         this.totalRating ++;
         this.sumRating += rating;
-        this.rating = (double) this.sumRating / totalRating;
+        this.rating = (int) this.sumRating / totalRating;
     }
 
     public void like(){
         this.likes ++;
     }
+
+    public void reproduce(Audio audio){
+        this.totalReproductions ++;
+        System.out.println("Reproduzindo: " + audio.title);
+    }
+
 }
